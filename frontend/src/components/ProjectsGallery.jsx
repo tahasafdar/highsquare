@@ -10,7 +10,7 @@ import { X, Expand } from "lucide-react";
 const projects = [
   {
     image: "/images/projects/project-1.jpg",
-    title: "Commercial Complex",
+    title: "TGI Grand Nandan Kanan Hotel & Resort",
     category: "Commercial",
     height: "h-80",
   },
@@ -39,8 +39,8 @@ const projects = [
     height: "h-80",
   },
   {
-    image: "/images/projects/project-6.jpg",
-    title: "Premium Villa",
+    image: "/images/projects/project-6.jpeg",
+    title: "Ramashray",
     category: "Residential",
     height: "h-72",
   },
