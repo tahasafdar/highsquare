@@ -17,25 +17,19 @@ import OurProcess from "../components/OurProcess";
 function PageLoader() {
   return (
     <motion.div
-      className="fixed inset-0 z-[100] bg-[#0A0A0A] flex items-center justify-center"
+      className="fixed inset-0 z-[100] bg-white flex items-center justify-center"
       exit={{ opacity: 0 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
     >
       <div className="text-center">
-        {/* Animated logo */}
-        <motion.div
-          initial={{ rotate: 0, scale: 0.5, opacity: 0 }}
-          animate={{ rotate: 45, scale: 1, opacity: 1 }}
+        <motion.img
+          src={process.env.PUBLIC_URL + "/images/logo.png"}
+          alt="High Square"
+          className="h-20 w-auto mx-auto"
+          initial={{ scale: 0.5, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="w-16 h-16 border border-[#D4AF37] mx-auto flex items-center justify-center"
-        >
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: 0.3, duration: 0.4 }}
-            className="w-6 h-6 bg-[#D4AF37]"
-          />
-        </motion.div>
+        />
 
         <motion.div
           initial={{ scaleX: 0 }}
@@ -98,7 +92,7 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A]" data-testid="home-page">
+    <div className="min-h-screen bg-white" data-testid="home-page">
       <AnimatePresence mode="wait">
         {loading && <PageLoader key="loader" />}
       </AnimatePresence>

@@ -85,23 +85,22 @@ function ProcessStep({ step, index, inView }) {
                 className="h-px flex-1 bg-gradient-to-r from-[#D4AF37]/40 to-transparent origin-left"
               />
             </div>
-            <h3 className="text-xl font-semibold font-['Oswald'] uppercase tracking-wide text-white mb-2 group-hover:text-[#D4AF37] transition-colors duration-300">
+            <h3 className="text-xl font-semibold font-['Oswald'] uppercase tracking-wide text-[#1A1A1A] mb-2 group-hover:text-[#D4AF37] transition-colors duration-300">
               {step.title}
             </h3>
-            <p className="text-sm leading-relaxed text-[#A3A3A3]">{step.desc}</p>
+            <p className="text-sm leading-relaxed text-[#666]">{step.desc}</p>
           </div>
         ) : (
-          /* Image */
-          <div className="overflow-hidden border border-white/5 group">
-            <motion.img
-              src={step.image}
-              alt={step.title}
-              className="w-full h-48 md:h-40 object-cover group-hover:scale-110 transition-transform duration-700"
-              loading="lazy"
-              initial={{ scale: 1.2 }}
-              animate={inView ? { scale: 1 } : {}}
-              transition={{ duration: 1.2 }}
-            />
+          /* Animated SVG illustration instead of static image */
+          <div className="overflow-hidden border border-black/5 bg-[#F8F8F8] p-6 flex items-center justify-center h-48 md:h-40">
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={inView ? { scale: 1, opacity: 1 } : {}}
+              transition={{ duration: 0.8, delay: index * 0.1 }}
+              className="w-20 h-20 rounded-full bg-[#D4AF37]/10 flex items-center justify-center"
+            >
+              <step.icon className="w-10 h-10 text-[#D4AF37]" strokeWidth={1} />
+            </motion.div>
           </div>
         )}
       </motion.div>
@@ -112,7 +111,7 @@ function ProcessStep({ step, index, inView }) {
           initial={{ scale: 0 }}
           animate={inView ? { scale: 1 } : {}}
           transition={{ duration: 0.5, delay: 0.2 + index * 0.1, type: "spring", stiffness: 200 }}
-          className="w-14 h-14 rounded-full border-2 border-[#D4AF37] bg-[#0A0A0A] flex items-center justify-center relative group"
+          className="w-14 h-14 rounded-full border-2 border-[#D4AF37] bg-white flex items-center justify-center relative group"
         >
           {/* Pulse ring */}
           <motion.div
@@ -142,17 +141,16 @@ function ProcessStep({ step, index, inView }) {
         className={`${isEven ? "md:pl-12 md:order-3" : "md:pr-12 md:order-1"}`}
       >
         {isEven ? (
-          /* Image */
-          <div className="overflow-hidden border border-white/5 group">
-            <motion.img
-              src={step.image}
-              alt={step.title}
-              className="w-full h-48 md:h-40 object-cover group-hover:scale-110 transition-transform duration-700"
-              loading="lazy"
-              initial={{ scale: 1.2 }}
-              animate={inView ? { scale: 1 } : {}}
-              transition={{ duration: 1.2 }}
-            />
+          /* Animated SVG illustration */
+          <div className="overflow-hidden border border-black/5 bg-[#F8F8F8] p-6 flex items-center justify-center h-48 md:h-40">
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={inView ? { scale: 1, opacity: 1 } : {}}
+              transition={{ duration: 0.8, delay: index * 0.1 }}
+              className="w-20 h-20 rounded-full bg-[#D4AF37]/10 flex items-center justify-center"
+            >
+              <step.icon className="w-10 h-10 text-[#D4AF37]" strokeWidth={1} />
+            </motion.div>
           </div>
         ) : (
           /* Content card */
@@ -166,10 +164,10 @@ function ProcessStep({ step, index, inView }) {
               />
               <span className="text-4xl font-black font-['Oswald'] gold-text opacity-40">{step.num}</span>
             </div>
-            <h3 className="text-xl font-semibold font-['Oswald'] uppercase tracking-wide text-white mb-2 group-hover:text-[#D4AF37] transition-colors duration-300">
+            <h3 className="text-xl font-semibold font-['Oswald'] uppercase tracking-wide text-[#1A1A1A] mb-2 group-hover:text-[#D4AF37] transition-colors duration-300">
               {step.title}
             </h3>
-            <p className="text-sm leading-relaxed text-[#A3A3A3]">{step.desc}</p>
+            <p className="text-sm leading-relaxed text-[#666]">{step.desc}</p>
           </div>
         )}
       </motion.div>
@@ -179,7 +177,7 @@ function ProcessStep({ step, index, inView }) {
         initial={{ scale: 0 }}
         animate={inView ? { scale: 1 } : {}}
         transition={{ duration: 0.4, delay: index * 0.08 }}
-        className="md:hidden absolute left-0 top-0 w-10 h-10 rounded-full border-2 border-[#D4AF37] bg-[#0A0A0A] flex items-center justify-center -ml-5"
+        className="md:hidden absolute left-0 top-0 w-10 h-10 rounded-full border-2 border-[#D4AF37] bg-white flex items-center justify-center -ml-5"
       >
         <step.icon className="w-4 h-4 text-[#D4AF37]" strokeWidth={1.5} />
       </motion.div>
@@ -195,7 +193,7 @@ export default function OurProcess() {
     <section
       ref={ref}
       data-testid="our-process-section"
-      className="py-24 lg:py-32 bg-[#0A0A0A] relative overflow-hidden"
+      className="py-24 lg:py-32 bg-white relative overflow-hidden"
     >
       {/* Background accent */}
       <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#D4AF37]/10 to-transparent hidden md:block" />
@@ -230,7 +228,7 @@ export default function OurProcess() {
               initial={{ y: "100%" }}
               animate={inView ? { y: 0 } : {}}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="text-4xl sm:text-5xl font-bold uppercase tracking-tight font-['Oswald'] text-white"
+              className="text-4xl sm:text-5xl font-bold uppercase tracking-tight font-['Oswald'] text-[#1A1A1A]"
             >
               Our Process
             </motion.h2>
@@ -239,7 +237,7 @@ export default function OurProcess() {
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-base text-[#A3A3A3] mt-4 max-w-lg mx-auto"
+            className="text-base text-[#666] mt-4 max-w-lg mx-auto"
           >
             From the first consultation to after-sales support, every step is crafted for a seamless experience.
           </motion.p>

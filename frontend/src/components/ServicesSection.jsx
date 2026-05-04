@@ -51,7 +51,7 @@ function ServiceCard({ service, i, inView }) {
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
       data-testid={`service-card-${i}`}
-      className="relative bg-[#1A1A1A] border border-white/5 p-8 lg:p-10 group cursor-pointer overflow-hidden"
+      className="relative bg-white border border-black/5 p-8 lg:p-10 group cursor-pointer overflow-hidden shadow-sm hover:shadow-lg"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
@@ -69,7 +69,7 @@ function ServiceCard({ service, i, inView }) {
       />
 
       {/* Background number */}
-      <span className="absolute top-4 right-4 text-5xl font-black font-['Oswald'] text-white/[0.03] group-hover:text-[#D4AF37]/[0.08] transition-colors duration-500">
+      <span className="absolute top-4 right-4 text-5xl font-black font-['Oswald'] text-black/[0.03] group-hover:text-[#D4AF37]/[0.08] transition-colors duration-500">
         {service.num}
       </span>
 
@@ -84,10 +84,10 @@ function ServiceCard({ service, i, inView }) {
           />
         </motion.div>
 
-        <h3 className="text-xl font-semibold font-['Oswald'] uppercase tracking-wide text-white mb-3">
+        <h3 className="text-xl font-semibold font-['Oswald'] uppercase tracking-wide text-[#1A1A1A] mb-3">
           {service.title}
         </h3>
-        <p className="text-sm leading-relaxed text-[#A3A3A3]">
+        <p className="text-sm leading-relaxed text-[#666]">
           {service.desc}
         </p>
 
@@ -119,7 +119,7 @@ export default function ServicesSection() {
       id="services"
       ref={ref}
       data-testid="services-section"
-      className="py-24 lg:py-32 bg-[#121212] relative noise-overlay"
+      className="py-24 lg:py-32 bg-[#F8F8F8] relative noise-overlay"
     >
       {/* Decorative diamond pattern */}
       <DiamondPattern className="absolute top-0 right-0 w-96 h-96 hidden lg:block" />
@@ -147,7 +147,7 @@ export default function ServicesSection() {
                 initial={{ y: "100%" }}
                 animate={inView ? { y: 0 } : {}}
                 transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-                className="text-4xl sm:text-5xl font-bold uppercase tracking-tight font-['Oswald'] text-white"
+                className="text-4xl sm:text-5xl font-bold uppercase tracking-tight font-['Oswald'] text-[#1A1A1A]"
               >
                 Our Services
               </motion.h2>

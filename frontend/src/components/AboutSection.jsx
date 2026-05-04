@@ -2,7 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import { AluminiumProfileGraphic } from "./Graphics";
 
-const ABOUT_IMG = "https://images.unsplash.com/photo-1765766601432-edcdc9ae017d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Njd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBtb2Rlcm4lMjBob21lJTIwaW50ZXJpb3IlMjBnbGFzcyUyMGRvb3IlMjBzbGlkaW5nfGVufDB8fHx8MTc3NjIzMzUzN3ww&ixlib=rb-4.1.0&q=85";
+const ABOUT_IMG = "https://images.unsplash.com/photo-1758315417336-38777d626815?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNTl8MHwxfHNlYXJjaHwyfHxtb2Rlcm4lMjBhbHVtaW5pdW0lMjBzbGlkaW5nJTIwd2luZG93JTIwcmVzaWRlbnRpYWwlMjBicmlnaHQlMjBpbnRlcmlvcnxlbnwwfHx8fDE3Nzc5MjQ4NTV8MA&ixlib=rb-4.1.0&q=85";
 
 const stats = [
   { number: 25, suffix: "+", label: "Years of Excellence" },
@@ -46,7 +46,7 @@ export default function AboutSection() {
       id="about"
       ref={ref}
       data-testid="about-section"
-      className="py-24 lg:py-32 bg-[#0A0A0A] relative overflow-hidden"
+      className="py-24 lg:py-32 bg-white relative overflow-hidden"
     >
       {/* Decorative aluminium profile graphic */}
       <AluminiumProfileGraphic className="absolute -right-10 top-1/2 -translate-y-1/2 w-56 h-56 opacity-20 hidden lg:block" />
@@ -111,7 +111,7 @@ export default function AboutSection() {
                 initial={{ y: "100%" }}
                 animate={inView ? { y: 0 } : {}}
                 transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                className="text-4xl sm:text-5xl font-bold uppercase tracking-tight font-['Oswald'] text-white mb-8"
+                className="text-4xl sm:text-5xl font-bold uppercase tracking-tight font-['Oswald'] text-[#1A1A1A] mb-8"
               >
                 Redefining
                 <br />
@@ -123,7 +123,7 @@ export default function AboutSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="text-base leading-relaxed text-[#A3A3A3] mb-6"
+              className="text-base leading-relaxed text-[#666] mb-6"
             >
               High Square Aluminium, a venture by Monalisa Aluminium, has been at the forefront of premium aluminium solutions for over two decades. Based in Indore with operations extending to Dewas, we bring architectural visions to life through precision engineering and exceptional craftsmanship.
             </motion.p>
@@ -131,7 +131,7 @@ export default function AboutSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.75 }}
-              className="text-base leading-relaxed text-[#A3A3A3] mb-12"
+              className="text-base leading-relaxed text-[#666] mb-12"
             >
               Our commitment to quality materials and innovative design has made us the trusted choice for architects, builders, and homeowners seeking lasting elegance.
             </motion.p>

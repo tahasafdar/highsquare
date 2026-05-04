@@ -50,7 +50,7 @@ function ReasonCard({ reason, i, inView }) {
     >
       {/* Animated background fill */}
       <motion.div
-        className="absolute inset-0 bg-[#1A1A1A] border border-white/5"
+        className="absolute inset-0 bg-white border border-black/5"
         initial={{ opacity: 0 }}
         animate={{ opacity: hovered ? 1 : 0 }}
         transition={{ duration: 0.4 }}
@@ -74,10 +74,10 @@ function ReasonCard({ reason, i, inView }) {
           </motion.div>
         </motion.div>
 
-        <h3 className="text-sm font-semibold font-['Oswald'] uppercase tracking-wider text-white mb-2">
+        <h3 className="text-sm font-semibold font-['Oswald'] uppercase tracking-wider text-[#1A1A1A] mb-2">
           {reason.title}
         </h3>
-        <p className="text-xs leading-relaxed text-[#A3A3A3]">
+        <p className="text-xs leading-relaxed text-[#666]">
           {reason.desc}
         </p>
 
@@ -100,7 +100,7 @@ export default function WhyChooseUs() {
     <section
       ref={ref}
       data-testid="why-choose-section"
-      className="py-24 lg:py-32 bg-[#121212] relative"
+      className="py-24 lg:py-32 bg-[#F8F8F8] relative"
     >
       {/* Animated gold line at top */}
       <motion.div
@@ -140,7 +140,7 @@ export default function WhyChooseUs() {
               initial={{ y: "100%" }}
               animate={inView ? { y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="text-4xl sm:text-5xl font-bold uppercase tracking-tight font-['Oswald'] text-white"
+              className="text-4xl sm:text-5xl font-bold uppercase tracking-tight font-['Oswald'] text-[#1A1A1A]"
             >
               Why Choose Us
             </motion.h2>

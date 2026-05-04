@@ -32,7 +32,7 @@ function SolutionCard({ sol, i, inView }) {
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.8, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] }}
       data-testid={`custom-solution-${i}`}
-      className="bg-[#121212] border border-[#D4AF37]/10 p-10 text-center group relative overflow-hidden"
+      className="bg-[#F8F8F8] border border-[#D4AF37]/10 p-10 text-center group relative overflow-hidden"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
@@ -50,7 +50,7 @@ function SolutionCard({ sol, i, inView }) {
       />
 
       {/* Background number */}
-      <span className="absolute top-6 right-6 text-6xl font-black font-['Oswald'] text-white/[0.02] group-hover:text-[#D4AF37]/[0.06] transition-colors duration-700">
+      <span className="absolute top-6 right-6 text-6xl font-black font-['Oswald'] text-[#1A1A1A]/[0.02] group-hover:text-[#D4AF37]/[0.06] transition-colors duration-700">
         {sol.num}
       </span>
 
@@ -76,10 +76,10 @@ function SolutionCard({ sol, i, inView }) {
           </motion.div>
         </motion.div>
 
-        <h3 className="text-lg font-semibold font-['Oswald'] uppercase tracking-wider text-white mb-3">
+        <h3 className="text-lg font-semibold font-['Oswald'] uppercase tracking-wider text-[#1A1A1A] mb-3">
           {sol.title}
         </h3>
-        <p className="text-sm leading-relaxed text-[#A3A3A3]">
+        <p className="text-sm leading-relaxed text-[#666]">
           {sol.desc}
         </p>
       </div>
@@ -95,7 +95,7 @@ export default function CustomSolutions() {
     <section
       ref={ref}
       data-testid="custom-solutions-section"
-      className="py-24 lg:py-32 bg-[#0A0A0A] relative overflow-hidden"
+      className="py-24 lg:py-32 bg-white relative overflow-hidden"
     >
       {/* Animated rings */}
       <motion.div
@@ -145,7 +145,7 @@ export default function CustomSolutions() {
               initial={{ y: "100%" }}
               animate={inView ? { y: 0 } : {}}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="text-4xl sm:text-5xl font-bold uppercase tracking-tight font-['Oswald'] text-white"
+              className="text-4xl sm:text-5xl font-bold uppercase tracking-tight font-['Oswald'] text-[#1A1A1A]"
             >
               Custom Solutions
             </motion.h2>
@@ -154,7 +154,7 @@ export default function CustomSolutions() {
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-base text-[#A3A3A3] mt-6 max-w-lg mx-auto"
+            className="text-base text-[#666] mt-6 max-w-lg mx-auto"
           >
             Beyond standard offerings, we specialize in bespoke aluminium solutions that bring your architectural vision to reality.
           </motion.p>

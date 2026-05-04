@@ -52,7 +52,7 @@ export default function ProductShowcase() {
       id="products"
       ref={ref}
       data-testid="product-showcase-section"
-      className="py-24 lg:py-32 bg-[#0A0A0A]"
+      className="py-24 lg:py-32 bg-white"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
@@ -78,7 +78,7 @@ export default function ProductShowcase() {
                 initial={{ y: "100%" }}
                 animate={inView ? { y: 0 } : {}}
                 transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                className="text-4xl sm:text-5xl font-bold uppercase tracking-tight font-['Oswald'] text-white"
+                className="text-4xl sm:text-5xl font-bold uppercase tracking-tight font-['Oswald'] text-[#1A1A1A]"
               >
                 Product Showcase
               </motion.h2>
@@ -90,7 +90,7 @@ export default function ProductShowcase() {
               data-testid="product-prev-btn"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              className="w-12 h-12 border border-white/20 flex items-center justify-center hover:border-[#D4AF37] hover:text-[#D4AF37] transition-colors duration-300 text-white"
+              className="w-12 h-12 border border-black/20 flex items-center justify-center hover:border-[#D4AF37] hover:text-[#D4AF37] transition-colors duration-300 text-[#1A1A1A]"
             >
               <ChevronLeft size={20} />
             </motion.button>
@@ -99,7 +99,7 @@ export default function ProductShowcase() {
               data-testid="product-next-btn"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              className="w-12 h-12 border border-white/20 flex items-center justify-center hover:border-[#D4AF37] hover:text-[#D4AF37] transition-colors duration-300 text-white"
+              className="w-12 h-12 border border-black/20 flex items-center justify-center hover:border-[#D4AF37] hover:text-[#D4AF37] transition-colors duration-300 text-[#1A1A1A]"
             >
               <ChevronRight size={20} />
             </motion.button>
@@ -109,7 +109,7 @@ export default function ProductShowcase() {
         {/* Product display */}
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
           {/* Image with mask transition */}
-          <div className="aspect-[4/3] overflow-hidden relative">
+          <div className="aspect-[4/3] overflow-hidden relative bg-[#F5F5F5] border border-black/5">
             <AnimatePresence mode="wait" custom={direction}>
               <motion.img
                 key={active}
@@ -121,11 +121,11 @@ export default function ProductShowcase() {
                 transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
                 src={categories[active].image}
                 alt={categories[active].name}
-                className="w-full h-full object-cover absolute inset-0"
+                className="w-full h-full object-contain absolute inset-0 p-4"
                 loading="lazy"
               />
             </AnimatePresence>
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/60 to-transparent z-10" />
+            <div className="absolute inset-0 bg-gradient-to-t from-white/40 to-transparent z-10" />
 
             {/* Image counter */}
             <div className="absolute bottom-4 left-4 z-20 flex items-center gap-2">
@@ -157,10 +157,10 @@ export default function ProductShowcase() {
                 <span className="text-7xl lg:text-8xl font-black font-['Oswald'] gold-text opacity-30">
                   0{active + 1}
                 </span>
-                <h3 className="text-3xl lg:text-4xl font-bold font-['Oswald'] uppercase tracking-tight text-white -mt-4">
+                <h3 className="text-3xl lg:text-4xl font-bold font-['Oswald'] uppercase tracking-tight text-[#1A1A1A] -mt-4">
                   {categories[active].name}
                 </h3>
-                <p className="text-base leading-relaxed text-[#A3A3A3] mt-6 max-w-md">
+                <p className="text-base leading-relaxed text-[#666] mt-6 max-w-md">
                   {categories[active].desc}
                 </p>
                 <motion.a

@@ -18,7 +18,7 @@ export default function BrandStatement() {
     <section
       ref={ref}
       data-testid="brand-statement-section"
-      className="py-32 lg:py-44 bg-[#0A0A0A] relative overflow-hidden"
+      className="py-16 lg:py-20 bg-[#F8F8F8] relative overflow-hidden"
     >
       {/* Main headline with parallax */}
       <motion.div style={{ y: textY }} className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
@@ -27,10 +27,9 @@ export default function BrandStatement() {
             initial={{ y: "100%" }}
             animate={inView ? { y: 0 } : {}}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-[0.95] font-['Oswald'] text-white"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-[0.95] font-['Oswald'] text-[#1A1A1A]"
           >
-            Built with{" "}
-            <span className="gold-text">Precision</span>.
+            Strong. <span className="gold-text">Durable</span>. Reliable.
           </motion.h2>
         </div>
         <div className="overflow-hidden">
@@ -38,10 +37,9 @@ export default function BrandStatement() {
             initial={{ y: "100%" }}
             animate={inView ? { y: 0 } : {}}
             transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-[0.95] font-['Oswald'] text-white"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-[0.95] font-['Oswald'] text-[#1A1A1A]"
           >
-            Designed for{" "}
-            <span className="gold-text">Modern Living</span>.
+            Designed for <span className="gold-text">Modern Living</span>.
           </motion.h2>
         </div>
 
@@ -54,7 +52,7 @@ export default function BrandStatement() {
       </motion.div>
 
       {/* Infinite marquee */}
-      <div className="mt-20 overflow-hidden border-t border-b border-white/5 py-5">
+      <div className="mt-12 overflow-hidden border-t border-b border-black/5 py-5">
         <motion.div
           animate={{ x: [0, "-50%"] }}
           transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
@@ -63,7 +61,7 @@ export default function BrandStatement() {
           {[...Array(4)].map((_, i) => (
             <span
               key={i}
-              className="text-6xl md:text-7xl lg:text-8xl font-black font-['Oswald'] uppercase tracking-tight text-white/[0.03] mx-0 flex-shrink-0"
+              className="text-6xl md:text-7xl lg:text-8xl font-black font-['Oswald'] uppercase tracking-tight text-black/[0.03] mx-0 flex-shrink-0"
             >
               {marqueeText}
             </span>

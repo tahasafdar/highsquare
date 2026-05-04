@@ -64,26 +64,16 @@ export default function Navbar() {
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled ? "bg-[#0A0A0A]/95 backdrop-blur-md border-b border-white/5" : "bg-transparent"
+          scrolled ? "bg-white/95 backdrop-blur-md border-b border-black/5 shadow-sm" : "bg-white/80 backdrop-blur-sm"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-20">
-          <a href="#hero" className="flex items-center gap-3 group" data-testid="nav-logo">
-            <motion.div
-              whileHover={{ rotate: 135, scale: 1.1 }}
-              transition={{ type: "spring", stiffness: 300 }}
-              className="w-8 h-8 border border-[#D4AF37] rotate-45 flex items-center justify-center"
-            >
-              <div className="w-3 h-3 bg-[#D4AF37] rotate-0" />
-            </motion.div>
-            <div className="leading-none">
-              <span className="text-sm font-semibold tracking-[0.15em] uppercase text-white font-['Oswald']">
-                High Square
-              </span>
-              <span className="block text-[10px] tracking-[0.2em] uppercase text-[#D4AF37]">
-                Aluminium
-              </span>
-            </div>
+          <a href="#hero" className="flex items-center gap-2 group" data-testid="nav-logo">
+            <img
+              src={process.env.PUBLIC_URL + "/images/logo.png"}
+              alt="High Square Aluminium"
+              className="h-12 w-auto"
+            />
           </a>
 
           {/* Desktop */}
@@ -96,7 +86,7 @@ export default function Navbar() {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 * i }}
-                className="relative text-xs tracking-[0.2em] uppercase text-[#A3A3A3] hover:text-[#D4AF37] transition-colors duration-300 group"
+                className="relative text-xs tracking-[0.2em] uppercase text-[#555] hover:text-[#D4AF37] transition-colors duration-300 group"
               >
                 {link.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-px bg-[#D4AF37] group-hover:w-full transition-all duration-300" />
@@ -105,7 +95,7 @@ export default function Navbar() {
             <MagneticButton
               href="#contact"
               data-testid="nav-get-quote-btn"
-              className="relative border border-[#D4AF37] text-[#D4AF37] hover:text-[#0A0A0A] transition-colors duration-300 px-6 py-2.5 text-xs tracking-[0.2em] uppercase overflow-hidden group inline-block"
+              className="relative border border-[#D4AF37] text-[#D4AF37] hover:text-white transition-colors duration-300 px-6 py-2.5 text-xs tracking-[0.2em] uppercase overflow-hidden group inline-block"
             >
               <span className="absolute inset-0 bg-[#D4AF37] translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
               <span className="relative z-10">Get Quote</span>
@@ -115,7 +105,7 @@ export default function Navbar() {
           {/* Mobile toggle */}
           <motion.button
             data-testid="mobile-menu-toggle"
-            className="md:hidden text-white"
+            className="md:hidden text-[#1A1A1A]"
             onClick={() => setMobileOpen(!mobileOpen)}
             whileTap={{ scale: 0.9 }}
           >
@@ -141,7 +131,7 @@ export default function Navbar() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              className="md:hidden bg-[#0A0A0A]/98 backdrop-blur-lg border-t border-white/5"
+              className="md:hidden bg-white/98 backdrop-blur-lg border-t border-black/5"
               data-testid="mobile-menu"
             >
               <div className="px-6 py-8 flex flex-col gap-6">
@@ -153,7 +143,7 @@ export default function Navbar() {
                     initial={{ opacity: 0, x: -30 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3, delay: 0.05 * i }}
-                    className="text-sm tracking-[0.15em] uppercase text-[#A3A3A3] hover:text-[#D4AF37] transition-colors"
+                    className="text-sm tracking-[0.15em] uppercase text-[#555] hover:text-[#D4AF37] transition-colors"
                   >
                     {link.label}
                   </motion.a>

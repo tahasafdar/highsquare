@@ -55,7 +55,7 @@ function ProjectCard({ project, i, inView, onClick }) {
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
       data-testid={`project-card-${i}`}
-      className={`relative overflow-hidden group cursor-pointer border border-white/5 ${project.height}`}
+      className={`relative overflow-hidden group cursor-pointer border border-black/5 ${project.height}`}
       onClick={() => onClick(project)}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -112,7 +112,7 @@ function ProjectCard({ project, i, inView, onClick }) {
         <p className="text-[10px] tracking-[0.2em] uppercase text-[#D4AF37]">
           {project.category}
         </p>
-        <h3 className="text-lg font-semibold font-['Oswald'] uppercase text-white mt-1">
+        <h3 className="text-lg font-semibold font-['Oswald'] uppercase text-[#1A1A1A] mt-1">
           {project.title}
         </h3>
       </motion.div>
@@ -130,7 +130,7 @@ export default function ProjectsGallery() {
       id="projects"
       ref={ref}
       data-testid="projects-section"
-      className="py-24 lg:py-32 bg-[#0A0A0A]"
+      className="py-24 lg:py-32 bg-white"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
@@ -156,7 +156,7 @@ export default function ProjectsGallery() {
                 initial={{ y: "100%" }}
                 animate={inView ? { y: 0 } : {}}
                 transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                className="text-4xl sm:text-5xl font-bold uppercase tracking-tight font-['Oswald'] text-white"
+                className="text-4xl sm:text-5xl font-bold uppercase tracking-tight font-['Oswald'] text-[#1A1A1A]"
               >
                 Featured Projects
               </motion.h2>
@@ -166,7 +166,7 @@ export default function ProjectsGallery() {
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 0.05 } : {}}
             transition={{ duration: 1, delay: 0.5 }}
-            className="hidden lg:block text-8xl font-black font-['Oswald'] uppercase text-white"
+            className="hidden lg:block text-8xl font-black font-['Oswald'] uppercase text-[#1A1A1A]"
           >
             {String(projects.length).padStart(2, "0")}
           </motion.span>
@@ -186,13 +186,13 @@ export default function ProjectsGallery() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 bg-[#0A0A0A]/95 backdrop-blur-sm flex items-center justify-center p-6"
+          className="fixed inset-0 z-50 bg-white/95 backdrop-blur-sm flex items-center justify-center p-6"
           onClick={() => setLightbox(null)}
           data-testid="project-lightbox"
         >
           <motion.button
             onClick={() => setLightbox(null)}
-            className="absolute top-6 right-6 w-10 h-10 border border-white/20 flex items-center justify-center text-white hover:border-[#D4AF37] hover:text-[#D4AF37] transition-colors"
+            className="absolute top-6 right-6 w-10 h-10 border border-white/20 flex items-center justify-center text-[#1A1A1A] hover:border-[#D4AF37] hover:text-[#D4AF37] transition-colors"
             data-testid="lightbox-close-btn"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
@@ -220,7 +220,7 @@ export default function ProjectsGallery() {
               <p className="text-xs tracking-[0.2em] uppercase text-[#D4AF37]">
                 {lightbox.category}
               </p>
-              <h3 className="text-2xl font-bold font-['Oswald'] uppercase text-white mt-1">
+              <h3 className="text-2xl font-bold font-['Oswald'] uppercase text-[#1A1A1A] mt-1">
                 {lightbox.title}
               </h3>
             </motion.div>

@@ -29,7 +29,7 @@ const serviceOptions = [
 function AnimatedInput({ label, required, children }) {
   return (
     <div className="group">
-      <label className="text-xs tracking-[0.15em] uppercase text-[#A3A3A3] mb-2 block group-focus-within:text-[#D4AF37] transition-colors duration-300">
+      <label className="text-xs tracking-[0.15em] uppercase text-[#666] mb-2 block group-focus-within:text-[#D4AF37] transition-colors duration-300">
         {label} {required && <span className="text-[#D4AF37]">*</span>}
       </label>
       {children}
@@ -79,14 +79,14 @@ export default function ContactSection() {
     }
   };
 
-  const inputCls = "w-full bg-[#1A1A1A] border border-white/10 px-4 py-3.5 text-white text-sm focus:border-[#D4AF37]/60 focus:outline-none transition-all duration-300 focus:shadow-[0_0_0_1px_rgba(212,175,55,0.2)]";
+  const inputCls = "w-full bg-white border border-black/10 px-4 py-3.5 text-[#1A1A1A] text-sm focus:border-[#D4AF37]/60 focus:outline-none transition-all duration-300 focus:shadow-[0_0_0_1px_rgba(212,175,55,0.2)]";
 
   return (
     <section
       id="contact"
       ref={ref}
       data-testid="contact-section"
-      className="py-24 lg:py-32 bg-[#121212] relative"
+      className="py-24 lg:py-32 bg-[#F8F8F8] relative"
     >
       <motion.div
         initial={{ scaleX: 0 }}
@@ -125,7 +125,7 @@ export default function ContactSection() {
               initial={{ y: "100%" }}
               animate={inView ? { y: 0 } : {}}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="text-4xl sm:text-5xl font-bold uppercase tracking-tight font-['Oswald'] text-white"
+              className="text-4xl sm:text-5xl font-bold uppercase tracking-tight font-['Oswald'] text-[#1A1A1A]"
             >
               Get In Touch
             </motion.h2>
@@ -139,7 +139,7 @@ export default function ContactSection() {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h3 className="text-2xl font-semibold font-['Oswald'] uppercase tracking-wide text-white mb-8">
+            <h3 className="text-2xl font-semibold font-['Oswald'] uppercase tracking-wide text-[#1A1A1A] mb-8">
               Contact Information
             </h3>
 
@@ -150,21 +150,21 @@ export default function ContactSection() {
                   label: "Phone",
                   content: (
                     <>
-                      <p className="text-white">+91 98273 33552</p>
+                      <p className="text-[#1A1A1A]">+91 98273 33552</p>
                     </>
                   ),
                 },
                 {
                   icon: Mail,
                   label: "Email",
-                  content: <p className="text-white">info@highsquarealuminium.com</p>,
+                  content: <p className="text-[#1A1A1A]">info@highsquarealuminium.com</p>,
                 },
                 {
                   icon: MapPin,
                   label: "Head Office \u2014 Indore",
                   isGold: true,
                   content: (
-                    <p className="text-[#A3A3A3] text-sm">
+                    <p className="text-[#666] text-sm">
                       Monalisa Aluminium, MG Road, Indore, MP 452001
                     </p>
                   ),
@@ -174,7 +174,7 @@ export default function ContactSection() {
                   label: "Branch \u2014 Dewas",
                   isGold: true,
                   content: (
-                    <p className="text-[#A3A3A3] text-sm">
+                    <p className="text-[#666] text-sm">
                       High Square Aluminium, AB Road, Dewas, MP 455001
                     </p>
                   ),
@@ -194,7 +194,7 @@ export default function ContactSection() {
                     <item.icon className="w-5 h-5 text-[#D4AF37]" strokeWidth={1.5} />
                   </motion.div>
                   <div>
-                    <p className={`text-xs tracking-[0.15em] uppercase mb-1 ${item.isGold ? "text-[#D4AF37]" : "text-[#A3A3A3]"}`}>
+                    <p className={`text-xs tracking-[0.15em] uppercase mb-1 ${item.isGold ? "text-[#D4AF37]" : "text-[#666]"}`}>
                       {item.label}
                     </p>
                     {item.content}
@@ -229,7 +229,7 @@ export default function ContactSection() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 }}
-                  className="text-2xl font-semibold font-['Oswald'] uppercase text-white mb-3"
+                  className="text-2xl font-semibold font-['Oswald'] uppercase text-[#1A1A1A] mb-3"
                 >
                   Thank You
                 </motion.h3>
@@ -237,7 +237,7 @@ export default function ContactSection() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.5 }}
-                  className="text-[#A3A3A3]"
+                  className="text-[#666]"
                 >
                   We've received your inquiry and will get back to you shortly.
                 </motion.p>

@@ -14,7 +14,7 @@ export default function Footer() {
   const serviceLinks = ["Sliding Windows", "Casement Windows", "Aluminium Doors", "Glass Partitions", "Invisible Grills"];
 
   return (
-    <footer ref={ref} data-testid="footer-section" className="bg-[#0A0A0A] border-t border-white/5">
+    <footer ref={ref} data-testid="footer-section" className="bg-[#1A1A1A] border-t border-black/5">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Brand */}
@@ -25,21 +25,11 @@ export default function Footer() {
             className="md:col-span-2"
           >
             <div className="flex items-center gap-3 mb-6">
-              <motion.div
-                whileHover={{ rotate: 135, scale: 1.1 }}
-                transition={{ type: "spring", stiffness: 300 }}
-                className="w-8 h-8 border border-[#D4AF37] rotate-45 flex items-center justify-center"
-              >
-                <div className="w-3 h-3 bg-[#D4AF37] rotate-0" />
-              </motion.div>
-              <div className="leading-none">
-                <span className="text-sm font-semibold tracking-[0.15em] uppercase text-white font-['Oswald']">
-                  High Square
-                </span>
-                <span className="block text-[10px] tracking-[0.2em] uppercase text-[#D4AF37]">
-                  Aluminium
-                </span>
-              </div>
+              <img
+                src={process.env.PUBLIC_URL + "/images/logo.png"}
+                alt="High Square Aluminium"
+                className="h-14 w-auto"
+              />
             </div>
             <p className="text-sm text-[#A3A3A3] max-w-sm leading-relaxed">
               Premium aluminium solutions for modern architecture. Crafting spaces with precision and elegance since 1998.
