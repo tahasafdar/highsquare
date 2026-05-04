@@ -91,16 +91,22 @@ function ProcessStep({ step, index, inView }) {
             <p className="text-sm leading-relaxed text-[#666]">{step.desc}</p>
           </div>
         ) : (
-          /* Animated SVG illustration instead of static image */
-          <div className="overflow-hidden border border-black/5 bg-[#F8F8F8] p-6 flex items-center justify-center h-48 md:h-40">
+          /* Professional illustration panel */
+          <div className="relative border border-black/5 bg-gradient-to-br from-white to-[#F5F5F5] p-8 flex flex-col items-center justify-center h-48 md:h-44 shadow-[0_2px_12px_rgba(0,0,0,0.03)] group/ill">
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={inView ? { scale: 1, opacity: 1 } : {}}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="w-20 h-20 rounded-full bg-[#D4AF37]/10 flex items-center justify-center"
+              transition={{ duration: 0.6, delay: index * 0.08 }}
+              className="w-16 h-16 flex items-center justify-center relative"
             >
-              <step.icon className="w-10 h-10 text-[#D4AF37]" strokeWidth={1} />
+              {/* Background ring */}
+              <div className="absolute inset-0 rounded-full border border-[#D4AF37]/20 group-hover/ill:border-[#D4AF37]/40 transition-colors" />
+              <div className="absolute inset-1 rounded-full bg-[#D4AF37]/5 group-hover/ill:bg-[#D4AF37]/10 transition-colors" />
+              <step.icon className="w-7 h-7 text-[#D4AF37] relative z-10" strokeWidth={1.5} />
             </motion.div>
+            <span className="text-[10px] tracking-[0.2em] uppercase text-[#999] mt-3 font-medium">
+              Step {step.num}
+            </span>
           </div>
         )}
       </motion.div>
@@ -141,16 +147,21 @@ function ProcessStep({ step, index, inView }) {
         className={`${isEven ? "md:pl-12 md:order-3" : "md:pr-12 md:order-1"}`}
       >
         {isEven ? (
-          /* Animated SVG illustration */
-          <div className="overflow-hidden border border-black/5 bg-[#F8F8F8] p-6 flex items-center justify-center h-48 md:h-40">
+          /* Professional illustration panel */
+          <div className="relative border border-black/5 bg-gradient-to-br from-white to-[#F5F5F5] p-8 flex flex-col items-center justify-center h-48 md:h-44 shadow-[0_2px_12px_rgba(0,0,0,0.03)] group/ill">
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={inView ? { scale: 1, opacity: 1 } : {}}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="w-20 h-20 rounded-full bg-[#D4AF37]/10 flex items-center justify-center"
+              transition={{ duration: 0.6, delay: index * 0.08 }}
+              className="w-16 h-16 flex items-center justify-center relative"
             >
-              <step.icon className="w-10 h-10 text-[#D4AF37]" strokeWidth={1} />
+              <div className="absolute inset-0 rounded-full border border-[#D4AF37]/20 group-hover/ill:border-[#D4AF37]/40 transition-colors" />
+              <div className="absolute inset-1 rounded-full bg-[#D4AF37]/5 group-hover/ill:bg-[#D4AF37]/10 transition-colors" />
+              <step.icon className="w-7 h-7 text-[#D4AF37] relative z-10" strokeWidth={1.5} />
             </motion.div>
+            <span className="text-[10px] tracking-[0.2em] uppercase text-[#999] mt-3 font-medium">
+              Step {step.num}
+            </span>
           </div>
         ) : (
           /* Content card */
@@ -193,7 +204,7 @@ export default function OurProcess() {
     <section
       ref={ref}
       data-testid="our-process-section"
-      className="py-24 lg:py-32 bg-white relative overflow-hidden"
+      className="py-16 lg:py-24 bg-[#F9F9F9] relative overflow-hidden"
     >
       {/* Background accent */}
       <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#D4AF37]/10 to-transparent hidden md:block" />

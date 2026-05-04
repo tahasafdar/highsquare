@@ -119,7 +119,7 @@ export default function ServicesSection() {
       id="services"
       ref={ref}
       data-testid="services-section"
-      className="py-24 lg:py-32 bg-[#F8F8F8] relative noise-overlay"
+      className="py-16 lg:py-24 bg-[#F8F8F8] relative noise-overlay"
     >
       {/* Decorative diamond pattern */}
       <DiamondPattern className="absolute top-0 right-0 w-96 h-96 hidden lg:block" />

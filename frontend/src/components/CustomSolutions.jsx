@@ -95,7 +95,7 @@ export default function CustomSolutions() {
     <section
       ref={ref}
       data-testid="custom-solutions-section"
-      className="py-24 lg:py-32 bg-white relative overflow-hidden"
+      className="py-16 lg:py-24 bg-white relative overflow-hidden"
     >
       {/* Animated rings */}
       <motion.div

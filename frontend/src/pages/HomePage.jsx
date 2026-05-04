@@ -107,14 +107,23 @@ export default function HomePage() {
         >
           <Navbar />
           <HeroSection />
+          <div className="section-divider" />
           <BrandStatement />
+          <div className="section-divider" />
           <AboutSection />
+          <div className="section-divider" />
           <ServicesSection />
+          <div className="section-divider" />
           <ProductShowcase />
+          <div className="section-divider" />
           <WhyChooseUs />
+          <div className="section-divider" />
           <OurProcess />
+          <div className="section-divider" />
           <ProjectsGallery />
+          <div className="section-divider" />
           <CustomSolutions />
+          <div className="section-divider" />
           <ContactSection />
           <Footer />
           <WhatsAppButton />

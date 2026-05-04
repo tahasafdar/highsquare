@@ -46,7 +46,7 @@ export default function AboutSection() {
       id="about"
       ref={ref}
       data-testid="about-section"
-      className="py-24 lg:py-32 bg-white relative overflow-hidden"
+      className="py-16 lg:py-24 bg-[#F9F9F9] relative overflow-hidden"
     >
       {/* Decorative aluminium profile graphic */}
       <AluminiumProfileGraphic className="absolute -right-10 top-1/2 -translate-y-1/2 w-56 h-56 opacity-20 hidden lg:block" />

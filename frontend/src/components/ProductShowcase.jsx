@@ -52,7 +52,7 @@ export default function ProductShowcase() {
       id="products"
       ref={ref}
       data-testid="product-showcase-section"
-      className="py-24 lg:py-32 bg-white"
+      className="py-16 lg:py-24 bg-[#F9F9F9]"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
@@ -178,25 +178,18 @@ export default function ProductShowcase() {
               </motion.div>
             </AnimatePresence>
 
-            {/* Category tabs */}
-            <div className="flex gap-6 mt-12">
+            {/* Category tabs - prominent */}
+            <div className="flex gap-1 mt-12 bg-[#F5F5F5] p-1 rounded-sm w-fit">
               {categories.map((cat, i) => (
                 <button
                   key={cat.name}
                   onClick={() => { setDirection(i > active ? 1 : -1); setActive(i); }}
                   data-testid={`product-tab-${cat.name.toLowerCase()}`}
-                  className="relative text-xs tracking-[0.15em] uppercase pb-2 transition-all duration-300"
+                  className={`relative px-6 py-2.5 text-xs tracking-[0.15em] uppercase font-semibold transition-all duration-300 ${
+                    i === active ? "bg-[#D4AF37] text-white shadow-md" : "text-[#666] hover:text-[#1A1A1A]"
+                  }`}
                 >
-                  <span className={i === active ? "text-[#D4AF37]" : "text-[#A3A3A3] hover:text-white"}>
-                    {cat.name}
-                  </span>
-                  <motion.div
-                    className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#D4AF37]"
-                    initial={false}
-                    animate={{ scaleX: i === active ? 1 : 0 }}
-                    transition={{ duration: 0.3 }}
-                    style={{ transformOrigin: "left" }}
-                  />
+                  {cat.name}
                 </button>
               ))}
             </div>
@@ -207,13 +200,13 @@ export default function ProductShowcase() {
         <div className="flex sm:hidden gap-3 mt-8 justify-center">
           <button
             onClick={() => navigate(-1)}
-            className="w-12 h-12 border border-white/20 flex items-center justify-center hover:border-[#D4AF37] hover:text-[#D4AF37] transition-colors text-white"
+            className="w-12 h-12 border border-black/10 flex items-center justify-center hover:border-[#D4AF37] hover:text-[#D4AF37] transition-colors text-[#666]"
           >
             <ChevronLeft size={20} />
           </button>
           <button
             onClick={() => navigate(1)}
-            className="w-12 h-12 border border-white/20 flex items-center justify-center hover:border-[#D4AF37] hover:text-[#D4AF37] transition-colors text-white"
+            className="w-12 h-12 border border-black/10 flex items-center justify-center hover:border-[#D4AF37] hover:text-[#D4AF37] transition-colors text-[#666]"
           >
             <ChevronRight size={20} />
           </button>

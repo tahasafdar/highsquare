@@ -100,7 +100,7 @@ export default function WhyChooseUs() {
     <section
       ref={ref}
       data-testid="why-choose-section"
-      className="py-24 lg:py-32 bg-[#F8F8F8] relative"
+      className="py-16 lg:py-24 bg-[#F8F8F8] relative"
     >
       {/* Animated gold line at top */}
       <motion.div

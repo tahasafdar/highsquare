@@ -86,7 +86,7 @@ export default function ContactSection() {
       id="contact"
       ref={ref}
       data-testid="contact-section"
-      className="py-24 lg:py-32 bg-[#F8F8F8] relative"
+      className="py-16 lg:py-24 bg-[#F8F8F8] relative"
     >
       <motion.div
         initial={{ scaleX: 0 }}

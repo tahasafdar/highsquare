@@ -130,7 +130,7 @@ export default function ProjectsGallery() {
       id="projects"
       ref={ref}
       data-testid="projects-section"
-      className="py-24 lg:py-32 bg-white"
+      className="py-16 lg:py-24 bg-[#F9F9F9]"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
