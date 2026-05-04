@@ -51,13 +51,13 @@ function ServiceCard({ service, i, inView }) {
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
       data-testid={`service-card-${i}`}
-      className="relative bg-white border border-black/5 p-8 lg:p-10 group cursor-pointer overflow-hidden shadow-sm hover:shadow-lg"
+      className="relative bg-white border border-black/5 p-8 lg:p-10 group cursor-pointer overflow-hidden"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        transform: hovered ? "perspective(1000px) rotateX(2deg) rotateY(-2deg) translateY(-8px)" : "perspective(1000px) rotateX(0) rotateY(0) translateY(0)",
-        transition: "transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s ease",
-        boxShadow: hovered ? "0 20px 60px rgba(212, 175, 55, 0.08)" : "none",
+        transform: hovered ? "translateY(-6px)" : "translateY(0)",
+        transition: "transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease",
+        boxShadow: hovered ? "0 16px 48px rgba(0,0,0,0.08), 0 0 0 1px rgba(212,175,55,0.15)" : "0 2px 8px rgba(0,0,0,0.03)",
       }}
     >
       {/* Gold border reveal on hover */}

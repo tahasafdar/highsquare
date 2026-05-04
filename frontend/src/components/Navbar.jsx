@@ -64,7 +64,7 @@ export default function Navbar() {
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled ? "bg-white/95 backdrop-blur-md border-b border-black/5 shadow-sm" : "bg-white/80 backdrop-blur-sm"
+          scrolled ? "bg-white/95 backdrop-blur-md border-b border-black/5 shadow-[0_1px_12px_rgba(0,0,0,0.04)]" : "bg-transparent"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-20">
@@ -86,7 +86,7 @@ export default function Navbar() {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 * i }}
-                className="relative text-xs tracking-[0.2em] uppercase text-[#555] hover:text-[#D4AF37] transition-colors duration-300 group"
+                className={`relative text-xs tracking-[0.2em] uppercase hover:text-[#D4AF37] transition-colors duration-300 group ${scrolled ? "text-[#555]" : "text-white/80"}`}
               >
                 {link.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-px bg-[#D4AF37] group-hover:w-full transition-all duration-300" />
@@ -105,7 +105,7 @@ export default function Navbar() {
           {/* Mobile toggle */}
           <motion.button
             data-testid="mobile-menu-toggle"
-            className="md:hidden text-[#1A1A1A]"
+            className={`md:hidden ${scrolled ? "text-[#1A1A1A]" : "text-white"}`}
             onClick={() => setMobileOpen(!mobileOpen)}
             whileTap={{ scale: 0.9 }}
           >

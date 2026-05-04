@@ -56,7 +56,11 @@ export default function WhatsAppButton() {
         className="w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center text-white shadow-lg shadow-[#25D366]/30 relative"
       >
         {/* Pulse ring */}
-        <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-20" />
+        <motion.span
+          className="absolute inset-0 rounded-full bg-[#25D366]"
+          animate={{ scale: [1, 1.4, 1.4], opacity: [0.4, 0, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
+        />
         <WhatsAppIcon size={26} />
       </motion.a>
     </div>

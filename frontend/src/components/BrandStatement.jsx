@@ -18,7 +18,7 @@ export default function BrandStatement() {
     <section
       ref={ref}
       data-testid="brand-statement-section"
-      className="py-16 lg:py-20 bg-[#F8F8F8] relative overflow-hidden"
+      className="py-20 lg:py-28 bg-white relative overflow-hidden"
     >
       {/* Main headline with parallax */}
       <motion.div style={{ y: textY }} className="max-w-7xl mx-auto px-6 lg:px-8 text-center">

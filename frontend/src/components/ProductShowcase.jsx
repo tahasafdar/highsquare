@@ -109,7 +109,7 @@ export default function ProductShowcase() {
         {/* Product display */}
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
           {/* Image with mask transition */}
-          <div className="aspect-[4/3] overflow-hidden relative bg-[#F5F5F5] border border-black/5">
+          <div className="aspect-[4/3] overflow-hidden relative bg-[#FAFAFA] border border-black/5 shadow-[0_2px_20px_rgba(0,0,0,0.05)]">
             <AnimatePresence mode="wait" custom={direction}>
               <motion.img
                 key={active}
