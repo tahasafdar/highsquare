@@ -1,84 +1,63 @@
-import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { MessageSquare, Search, FileText, CheckCircle, Factory, HardHat, KeyRound, HeadphonesIcon } from "lucide-react";
 
 const steps = [
-  { num: "01", title: "Consultation & Guidance", desc: "In-depth discussion to understand your requirements, preferences, and project vision.", icon: MessageSquare },
-  { num: "02", title: "Detailed Site Inspection", desc: "Expert team visits your site for precise measurements and structural assessment.", icon: Search },
-  { num: "03", title: "Design Proposal & Costing", desc: "Detailed design proposals with transparent pricing tailored to your budget.", icon: FileText },
-  { num: "04", title: "Project Finalization", desc: "Materials, timelines, and all technical details finalized before production.", icon: CheckCircle },
-  { num: "05", title: "Fabrication & Quality Check", desc: "Precision-fabricated aluminium profiles with rigorous quality inspections.", icon: Factory },
-  { num: "06", title: "Professional Installation", desc: "Skilled team ensures flawless fitting with attention to every detail.", icon: HardHat },
-  { num: "07", title: "Final Handover", desc: "Thorough walkthrough ensuring every element meets exacting standards.", icon: KeyRound },
-  { num: "08", title: "After-Sales Service", desc: "Ongoing maintenance support and warranty service for lasting peace of mind.", icon: HeadphonesIcon },
+  { num: "01", title: "Consultation", desc: "Understanding your requirements and project vision", icon: MessageSquare },
+  { num: "02", title: "Site Inspection", desc: "Precise measurements and structural assessment", icon: Search },
+  { num: "03", title: "Design & Costing", desc: "Detailed proposals with transparent pricing", icon: FileText },
+  { num: "04", title: "Finalization", desc: "Materials, timelines, and technical details locked", icon: CheckCircle },
+  { num: "05", title: "Fabrication", desc: "Precision manufacturing with quality checks", icon: Factory },
+  { num: "06", title: "Installation", desc: "Flawless fitting by our skilled team", icon: HardHat },
+  { num: "07", title: "Handover", desc: "Complete walkthrough and quality sign-off", icon: KeyRound },
+  { num: "08", title: "After-Sales", desc: "Ongoing support and warranty service", icon: HeadphonesIcon },
 ];
 
-function StepCard({ step, index, inView }) {
-  const [hovered, setHovered] = useState(false);
-
+function TimelineNode({ step, index, inView, total }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 20 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, delay: index * 0.07, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.5, delay: 0.15 + index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+      className="flex flex-col items-center relative group"
       data-testid={`process-step-${index}`}
-      className="relative group"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
     >
-      {/* Connector arrow (hidden on first of each row and on mobile) */}
-      {index % 4 !== 0 && (
-        <div className="absolute -left-4 top-1/2 -translate-y-1/2 hidden lg:block">
-          <motion.div
-            initial={{ scaleX: 0 }}
-            animate={inView ? { scaleX: 1 } : {}}
-            transition={{ duration: 0.4, delay: 0.3 + index * 0.07 }}
-            className="w-8 h-px bg-[#D4AF37]/30 origin-left"
-          />
-        </div>
-      )}
-
-      <div
-        className="bg-white border border-black/[0.04] p-6 lg:p-7 h-full transition-all duration-400"
-        style={{
-          boxShadow: hovered
-            ? "0 12px 36px rgba(0,0,0,0.07), 0 0 0 1px rgba(212,175,55,0.15)"
-            : "0 1px 6px rgba(0,0,0,0.03)",
-          transform: hovered ? "translateY(-4px)" : "translateY(0)",
-          transition: "all 0.4s cubic-bezier(0.22, 1, 0.36, 1)",
-        }}
-      >
-        {/* Top row: number + icon */}
-        <div className="flex items-start justify-between mb-5">
-          <span className="text-3xl font-black font-['Oswald'] text-[#D4AF37]/20 leading-none">
-            {step.num}
-          </span>
-          <motion.div
-            animate={hovered ? { scale: 1.1, rotate: -5 } : { scale: 1, rotate: 0 }}
-            transition={{ type: "spring", stiffness: 300, damping: 15 }}
-            className="w-11 h-11 rounded-full bg-[#D4AF37]/[0.07] flex items-center justify-center group-hover:bg-[#D4AF37]/[0.12] transition-colors duration-300"
-          >
-            <step.icon className="w-5 h-5 text-[#D4AF37]" strokeWidth={1.5} />
-          </motion.div>
-        </div>
-
-        {/* Title */}
-        <h3 className="text-base font-bold font-['Oswald'] uppercase tracking-wide text-[#1A1A1A] mb-2 group-hover:text-[#D4AF37] transition-colors duration-300">
-          {step.title}
-        </h3>
-
-        {/* Description */}
-        <p className="text-sm leading-relaxed text-[#777]">
-          {step.desc}
-        </p>
-
-        {/* Bottom gold accent line */}
+      {/* Vertical content — alternates above/below the line */}
+      <div className={`flex flex-col items-center ${index % 2 === 0 ? "flex-col" : "flex-col-reverse"}`}>
+        {/* Content block */}
         <motion.div
-          className="mt-5 h-[2px] bg-[#D4AF37] rounded-full"
-          initial={{ width: 24 }}
-          animate={{ width: hovered ? 48 : 24 }}
-          transition={{ duration: 0.3 }}
-        />
+          className={`w-36 lg:w-40 text-center ${index % 2 === 0 ? "mb-5" : "mt-5"}`}
+          whileHover={{ y: index % 2 === 0 ? -4 : 4 }}
+          transition={{ type: "spring", stiffness: 300 }}
+        >
+          <h4 className="text-xs font-bold font-['Oswald'] uppercase tracking-wider text-[#1A1A1A] group-hover:text-[#D4AF37] transition-colors duration-300 leading-tight">
+            {step.title}
+          </h4>
+          <p className="text-[11px] leading-snug text-[#888] mt-1.5">
+            {step.desc}
+          </p>
+        </motion.div>
+
+        {/* Node circle */}
+        <div className="relative z-10">
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={inView ? { scale: 1 } : {}}
+            transition={{ duration: 0.4, delay: 0.3 + index * 0.1, type: "spring", stiffness: 250 }}
+            className="w-12 h-12 rounded-full bg-white border-2 border-[#D4AF37] flex items-center justify-center shadow-[0_2px_12px_rgba(212,175,55,0.15)] group-hover:shadow-[0_4px_20px_rgba(212,175,55,0.25)] group-hover:border-[#AA7C11] transition-all duration-300"
+          >
+            <step.icon className="w-5 h-5 text-[#D4AF37] group-hover:text-[#AA7C11] transition-colors" strokeWidth={1.5} />
+          </motion.div>
+          {/* Step number badge */}
+          <motion.span
+            initial={{ scale: 0 }}
+            animate={inView ? { scale: 1 } : {}}
+            transition={{ delay: 0.5 + index * 0.1, type: "spring" }}
+            className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[#D4AF37] text-white text-[9px] font-bold flex items-center justify-center shadow-sm"
+          >
+            {index + 1}
+          </motion.span>
+        </div>
       </div>
     </motion.div>
   );
@@ -87,6 +66,9 @@ function StepCard({ step, index, inView }) {
 export default function OurProcess() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
+  const scrollRef = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "center center"] });
+  const lineWidth = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
     <section
@@ -100,7 +82,7 @@ export default function OurProcess() {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-14"
+          className="text-center mb-16"
         >
           <div className="flex items-center justify-center gap-3 mb-4">
             <motion.div
@@ -133,33 +115,77 @@ export default function OurProcess() {
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-base text-[#666] mt-4 max-w-lg mx-auto"
+            className="text-base text-[#666] mt-4 max-w-md mx-auto"
           >
-            From the first consultation to after-sales support, every step is crafted for a seamless experience.
+            8 steps from first call to lasting satisfaction
           </motion.p>
         </motion.div>
 
-        {/* 4x2 Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
-          {steps.map((step, i) => (
-            <StepCard key={step.num} step={step} index={i} inView={inView} />
-          ))}
+        {/* ===== DESKTOP: Horizontal timeline ===== */}
+        <div className="hidden lg:block relative">
+          {/* Animated gold line */}
+          <div className="absolute top-1/2 left-0 right-0 h-px bg-black/[0.06]" />
+          <motion.div
+            style={{ width: lineWidth }}
+            className="absolute top-1/2 left-0 h-[2px] bg-gradient-to-r from-[#D4AF37] via-[#E8C94B] to-[#D4AF37] -translate-y-px z-[1]"
+          />
+
+          {/* Nodes */}
+          <div className="relative flex justify-between items-center py-28">
+            {steps.map((step, i) => (
+              <TimelineNode key={step.num} step={step} index={i} inView={inView} total={steps.length} />
+            ))}
+          </div>
         </div>
 
-        {/* Bottom flow indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ delay: 1, duration: 0.6 }}
-          className="flex items-center justify-center mt-10 gap-2"
-        >
-          {steps.map((_, i) => (
-            <div key={i} className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-[#D4AF37]/30" />
-              {i < steps.length - 1 && <div className="w-4 h-px bg-[#D4AF37]/20 hidden sm:block" />}
-            </div>
-          ))}
-        </motion.div>
+        {/* ===== MOBILE: Vertical timeline ===== */}
+        <div className="lg:hidden relative pl-10">
+          {/* Vertical line */}
+          <motion.div
+            initial={{ scaleY: 0 }}
+            animate={inView ? { scaleY: 1 } : {}}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            className="absolute left-4 top-0 bottom-0 w-[2px] bg-gradient-to-b from-[#D4AF37] via-[#D4AF37]/40 to-transparent origin-top"
+          />
+
+          <div className="space-y-10">
+            {steps.map((step, i) => (
+              <motion.div
+                key={step.num}
+                initial={{ opacity: 0, x: -20 }}
+                animate={inView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.1 + i * 0.08 }}
+                className="relative flex gap-5 items-start group"
+                data-testid={`process-mobile-${i}`}
+              >
+                {/* Node */}
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={inView ? { scale: 1 } : {}}
+                  transition={{ delay: 0.2 + i * 0.08, type: "spring" }}
+                  className="absolute -left-10 top-0 w-9 h-9 rounded-full bg-white border-2 border-[#D4AF37] flex items-center justify-center shadow-[0_2px_10px_rgba(212,175,55,0.12)] z-10 flex-shrink-0"
+                >
+                  <step.icon className="w-4 h-4 text-[#D4AF37]" strokeWidth={1.5} />
+                </motion.div>
+
+                {/* Content */}
+                <div className="pt-0.5">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-[10px] tracking-[0.2em] uppercase text-[#D4AF37] font-semibold">
+                      Step {step.num}
+                    </span>
+                  </div>
+                  <h4 className="text-sm font-bold font-['Oswald'] uppercase tracking-wide text-[#1A1A1A] group-hover:text-[#D4AF37] transition-colors">
+                    {step.title}
+                  </h4>
+                  <p className="text-xs leading-relaxed text-[#777] mt-1">
+                    {step.desc}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
